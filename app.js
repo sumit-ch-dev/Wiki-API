@@ -12,7 +12,9 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/wikiDB", { useNewUrlParser: true, useUnifiedTopology: true });
+const uri = "mongodb+srv://admin-sumit:come-on123@cluster0.5ensux9.mongodb.net/wikiDB?retryWrites=true&w=majority"
+
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 const articleSchema = {
@@ -89,7 +91,7 @@ app.route("/articles/:articleTitle")
     })
     
 
-
+const port = 3000 || process.env.PORT
 
 app.listen(3000, function () {
     console.log("Server started on port 3000");
